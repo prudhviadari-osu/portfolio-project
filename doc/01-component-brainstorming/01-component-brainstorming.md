@@ -1,12 +1,10 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Prudhvi Adari
+- **Dot Number**: adari.6
+- **Due Date**: 2/6/2026 @ 12:40 PM
 
 ## Assignment Overview
-
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,8 +27,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
-
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
 opening the TODOs window from the sidebar. The icon looks like a tree and will
@@ -52,8 +48,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
-
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
 what we're hoping you will learn through this particular aspect of the portfolio
@@ -66,8 +60,6 @@ project. Specifically, students should be able to:
    discipline
 
 ## Assignment Rubric: 10 Points
-
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,23 +98,15 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+My interests are technology and medicine in a broad sense, but more specifically, I'n interested in AI and robotics. I intend to either become a doctor or a well-established robotic engineer who would be able to seamlessly integrate AI models into robots so that the models can interact and learn in the real world and in real time. My hobbies include but aren't limited to music, video games, watching shows (like anime), and reading books (currently leaning toward manga and novels).
 
 ## Assignment
-
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
 that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
-
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -142,8 +126,6 @@ list-like components that have different ways of manipulating the data. Think
 about different ways you might allow a client to manipulate your component.
 
 ### Example Component
-
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -211,68 +193,91 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: Patient
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component is supposed to model a patient and their unique medical data in one structured area for organization and easy access. The kernel should allow the client to access and, if needed, modify patient attributes while the secondary interface supports high-level health updates.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void setAttribute(Attribute a, String value)
+    - String getAttribute(Attribute a)
+    - boolean hasAttribute(Attribute a)
+    - void removeAttribute(Attribute a)
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - int age()
+    - Set allergies()
+    - void updateVitals(Vitals v)
+    - double height()
+    - double bmi()
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, patient data can change and update over time.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, Map.Pair seems especially useful for this kind of area where attributes need pairing with values as per what the patient exhibits over time. Otherwise, a Set could be used to list patient attributes without repeats. I could also make attribute and vitals classes.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Most of the secondary methods I made like age, height, and bmi are implementable via hasAttribute and getAttribute.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: NeuralNode
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - This component should be designed to represent a single node in a simple feed-forward neural network. The kernel is designed to store and manipulate weights and biases, while the secondary interface should allow for more interactions with the weights and biases as well as training method help.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - setWeights(Sequence<Double> w)
+    - setBias(double B)
+    - Sequence<Double> weights()
+    - double bias()
+    - double evaluate(Sequence<Double> inputs)
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - weightedSum(Sequence<Double> inputs)
+    - relu(Sequence<Double> inputs)
+    - sigmoid(Sequence<Double> inputs)
+    - randomizeWeights(Sequence<Double> inputs)
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, aside from OSU convention, as nodes tend to modified often during learning cycles for a model, making them immutable would only make the node more of a pain to use than less.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know but it probably could use Sequence to store all the weights in one data structor or Map.Pair if weights need special pairings per dimension.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, weights() and bias() can be used to implement weightedSum, as a general weighted sum in a neural network is just the cross product of the weights and bias.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: TimedInputQueue
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Models a sequence of input events, each associated with a timestamp and input type. The kernel supports insertion and removal of events, while secondary methods provide filtering and basic temporal analysis. I just thought it'd be cool to build game bots that play like people in video games.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void enqueue(InputType t, double time)
+    - InputType dequeue()
+    - boolean isEmpty()
+    - int size()
+    - Map.Pair<Double, InputType> front()
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - double duration()
+    - InputType mostFrequent()
+    - boolean moreUsed(InputType a, InputType b)
+    - TimedInputQueue filter(InputType t)
+    - TimedInputQueue filterbyTime(double startTime, double endTime) with default argument values of start of queue and end of queue timings if needed for single argument calls.
+    - void clearOld(double cutoffTime)
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, input can come in at any time and become irrelevant after some time as well.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Maybe Queue and Map.Pair
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Unsure, but I might have to define common InputTypes beforehand.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, the secondary methods here have the most amount of complexity among the three. However, using enqueue
 
 ## Post-Assignment
 
@@ -280,8 +285,6 @@ The following sections detail everything that you should do once you've
 completed the assignment.
 
 ### Changelog
-
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -320,8 +323,6 @@ of development.
 
 ### Submission
 
-<!-- TODO: read the submission instructions then delete this comment -->
-
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
 this [Markdown to PDF guide][markdown-to-pdf-guide]. However, PDFs should be
@@ -330,11 +331,7 @@ all your work is there before submitting. For future assignments, you will
 just be submitting a link to a pull request. This will be the only time
 you have to submit any PDFs.
 
-<!-- TODO: upload a PDF of this document and the CHANGELOG to Carmen then delete this comment -->
-
 ### Peer Review
-
-<!-- TODO: review the peer review guidelines then delete this comment -->
 
 Following the completion of this assignment, you will be assigned three
 students' component brainstorming assignments for review. Your job during the
