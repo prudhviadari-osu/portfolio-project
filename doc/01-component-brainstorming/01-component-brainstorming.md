@@ -196,7 +196,7 @@ will likely refine your design to make your implementation easier to use.
 - Component Design #1: Patient
   - **Description**:
     - This component is supposed to model a patient and their unique medical data in one structured area for organization and easy access. The kernel should allow the client to access and, if needed, modify patient attributes while the secondary interface supports high-level health updates.
-  - **Kernel Methods**:
+  - * *Kernel Methods**:
     - void setAttribute(Attribute a, String value)
     - String getAttribute(Attribute a)
     - boolean hasAttribute(Attribute a)
