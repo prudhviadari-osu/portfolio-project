@@ -54,10 +54,10 @@ what we're hoping you will learn through this particular aspect of the portfolio
 project. Specifically, students should be able to:
 
 1. Integrate their areas of interest in their personal lives and/or careers with
-   their knowledge of software design
+  their knowledge of software design
 2. Determine the achievablility of a software design given time constraints
 3. Design high-level software components following the software sequence
-   discipline
+  discipline
 
 ## Assignment Rubric: 10 Points
 
@@ -77,18 +77,18 @@ do good work.
 Below is further rationale/explanation for the rubric items above:
 
 1. Each design must align with your personal values and long-term
-   goals. Because the goal of this project is to help your build out a
-   portfolio, you really ought to care about what you're designing. We'll give
-   you a chance to share your personal values, interests, and long-term goals
-   below.
+  goals. Because the goal of this project is to help your build out a
+  portfolio, you really ought to care about what you're designing. We'll give
+  you a chance to share your personal values, interests, and long-term goals
+  below.
 2. Each design must be achievable over the course of a single
-   semester. Don't be afraid to design something very small. There is no shame
-   in keeping it simple.
+  semester. Don't be afraid to design something very small. There is no shame
+  in keeping it simple.
 3. Each design must fit within the software sequence discipline. In
-   other words, your design should expect to inherit from Standard, and it
-   should contain both kernel and secondary methods. Also, null and aliasing
-   must be avoided, when possible. The methods themselves must also be in
-   justifiable locations, such as kernel or secondary.
+  other words, your design should expect to inherit from Standard, and it
+  should contain both kernel and secondary methods. Also, null and aliasing
+  must be avoided, when possible. The methods themselves must also be in
+  justifiable locations, such as kernel or secondary.
 
 ## Pre-Assignment
 
@@ -133,44 +133,44 @@ mirror the formatting as close as possible in your designs. By following this
 format, we can be more confident that your designs will be possible.
 
 - Example Component: `NaturalNumber`
-  - **Description**:
-    - The purpose of this component is to model a non-negative
-      integer. Our intent with this design was to keep a simple kernel that
-      provides the minimum functionality needed to represent a natural number.
-      Then, we provide more complex mathematical operations in the secondary
-      interface.
-  - **Kernel Methods**:
-    - `void multiplyBy10(int k)`: multiplies `this` by 10 and adds `k`
-    - `int divideBy10()`: divides `this` by 10 and reports the remainder
-    - `boolean isZero()`: reports whether `this` is zero
-  - **Secondary Methods**:
-    - `void add(NaturalNumber n)`: adds `n` to `this`
-    - `void subtract(NaturalNumber n)`: subtracts `n` from `this`
-    - `void multiply(NaturalNumber n)`: multiplies `this` by `n`
-    - `NaturalNumber divide(NaturalNumber n)`: divides `this` by `n`, returning
-      the remainder
-    - ...
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - Yes, basically all OSU components have to be mutable as long as they
-        inherit from Standard. `clear`, `newInstance`, and `transferFrom` all
-        mutate `this`.
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - No. All methods work with integers or other NaturalNumbers.
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - Yes. NaturalNumber is base 10, and we track that in a constant called
-          `RADIX`.
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - Yes. The kernel methods `multiplyBy10` and `divideBy10` can be used to
-        manipulate our natural number as needed. For example, to implement
-        `increment`, we can trim the last digit off with `divideBy10`, add 1 to
-        it, verify that the digit hasn't overflown, and multiply the digit back.
-        If the digit overflows, we reset it to zero and recursively call
-        `increment`.
+- **Description**:
+  - The purpose of this component is to model a non-negative
+     integer. Our intent with this design was to keep a simple kernel that
+     provides the minimum functionality needed to represent a natural number.
+     Then, we provide more complex mathematical operations in the secondary
+     interface.
+- **Kernel Methods**:
+  - `void multiplyBy10(int k)`: multiplies `this` by 10 and adds `k`
+  - `int divideBy10()`: divides `this` by 10 and reports the remainder
+  - `boolean isZero()`: reports whether `this` is zero
+- **Secondary Methods**:
+  - `void add(NaturalNumber n)`: adds `n` to `this`
+  - `void subtract(NaturalNumber n)`: subtracts `n` from `this`
+  - `void multiply(NaturalNumber n)`: multiplies `this` by `n`
+  - `NaturalNumber divide(NaturalNumber n)`: divides `this` by `n`, returning
+     the remainder
+  - ...
+- **Additional Considerations** (*note*: "I don't know" is an acceptable
+   answer for each of the following questions):
+  - Would this component be mutable? Answer and explain:
+    - Yes, basically all OSU components have to be mutable as long as they
+       inherit from Standard. `clear`, `newInstance`, and `transferFrom` all
+       mutate `this`.
+  - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+     Answer and explain:
+    - No. All methods work with integers or other NaturalNumbers.
+  - Would this component need any enums or constants (e.g.,
+     `Program.Instruction`)? Answer and explain:
+    - Yes. NaturalNumber is base 10, and we track that in a constant called
+         `RADIX`.
+  - Can you implement your secondary methods using your kernel methods?
+     Answer, explain, and give at least one example:
+    - Yes. The kernel methods `multiplyBy10` and `divideBy10` can be used to
+       manipulate our natural number as needed. For example, to implement
+       `increment`, we can trim the last digit off with `divideBy10`, add 1 to
+       it, verify that the digit hasn't overflown, and multiply the digit back.
+       If the digit overflows, we reset it to zero and recursively call
+       `increment`.
 
 Keep in mind that the general idea when putting together these layered designs
 is to put the minimal implementation in the kernel. In this case, the kernel is
@@ -194,80 +194,80 @@ will likely refine your design to make your implementation easier to use.
 > Please use this section to share your designs.
 
 - Component Design #1: TimedInputQueue
-  - **Description**:
-    - The purpose of this component is to model a chronological sequenece of timestamped events. It allows for the storage of labels (actions) alongside the exact time they occurred. The kernel focuses on basic FIFO (First-In-First-Out) operations, while the secondary interface provides temporal analysis.
-  - - *Kernel Methods**:
-    - void enqueue(Map.Pair<String, Double> p): adds a new event-timestamp pair to the end of the queue
-    - Map.Pair<Stirng, Double> dequeue(): removes and returns the event-timestamp pair at the front of the queue
-    - int length(): reports the current number of events in the queue
-  - **Secondary Methods**:
-    - Map.Pair<String, Double> front(): reports the pair at the front of the queue without removing it
-    - double duration(): returns the time elapsed between the first and last events in the queue
-    - boolean isEmpty(): reports whether the queue contains any events
-    - double averageInterval(): Calculates the average time between events. (Useful for detecting lag or user speed).
-    - void removeOlderThan(double threshold): Clears out any events that happened before a certain timestamp. (Great for memory management).
-    - int frequency(String label): Counts how many times a specific event (like "CLICK") appears in the queue.
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - Yes, Inheriting from Standard allows the internal state of the queue to be modified via clear and transferFrom.
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - Yes. It relies on Map.Pair to bundle the String label and Double timestamp into a single entry without creating a custom object.
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - No. While specific event strings may be used by the user, the component itself treats the labels as generic strings.
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - Yes. For example, front can be implemented by calling dequeue to get the first element, saving it, and then using a combination of enqueue and dequeue to rotate the queue back to its original state.
+- **Description**:
+  - The purpose of this component is to model a chronological sequenece of timestamped events. It allows for the storage of labels (actions) alongside the exact time they occurred. The kernel focuses on basic FIFO (First-In-First-Out) operations, while the secondary interface provides temporal analysis.
+- - *Kernel Methods**:
+  - void enqueue(Map.Pair<String, Double> p): adds a new event-timestamp pair to the end of the queue
+  - Map.Pair<Stirng, Double> dequeue(): removes and returns the event-timestamp pair at the front of the queue
+  - int length(): reports the current number of events in the queue
+- **Secondary Methods**:
+  - Map.Pair<String, Double> front(): reports the pair at the front of the queue without removing it
+  - double duration(): returns the time elapsed between the first and last events in the queue
+  - boolean isEmpty(): reports whether the queue contains any events
+  - double averageInterval(): Calculates the average time between events. (Useful for detecting lag or user speed).
+  - void removeOlderThan(double threshold): Clears out any events that happened before a certain timestamp. (Great for memory management).
+  - int frequency(String label): Counts how many times a specific event (like "CLICK") appears in the queue.
+- **Additional Considerations** (*note*: "I don't know" is an acceptable
+   answer for each of the following questions):
+  - Would this component be mutable? Answer and explain:
+    - Yes, Inheriting from Standard allows the internal state of the queue to be modified via clear and transferFrom.
+  - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+     Answer and explain:
+    - Yes. It relies on Map.Pair to bundle the String label and Double timestamp into a single entry without creating a custom object.
+  - Would this component need any enums or constants (e.g.,
+     `Program.Instruction`)? Answer and explain:
+    - No. While specific event strings may be used by the user, the component itself treats the labels as generic strings.
+  - Can you implement your secondary methods using your kernel methods?
+     Answer, explain, and give at least one example:
+    - Yes. For example, front can be implemented by calling dequeue to get the first element, saving it, and then using a combination of enqueue and dequeue to rotate the queue back to its original state.
 
 - Component Design #2: NeuralNode
-  - **Description**:
-    - This component models a single artificial neuron within a neural network. It manages a collection of input weights and a single bias value. The kernel manages the raw data storage, while the secondary interface handles the mathematical activation logic.
-  - **Kernel Methods**:
-    - void setWeight(String inputId, double weight): assigns a weight value to a specific input connection
-    - void setBias(double b): sets the bias value for this node
-    - double weight(String inputId): reports the weight associated with a specified input
-  - **Secondary Methods**:
-    - double calculateActivation(Map<String, Double> inputs): computes the weighted sum of inputs plus bias
-    - void clearWeights(): resets all weights to zero without clearing the bias
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - Yes. Settings weights and biases directly mutates the state of the node.
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - No. The component uses basic types and existing OSU Map functionality for its representation.
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - No.
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - Yes. For example, calculateActivation can be implemented by iterating through the keys of the inputs map, calling the kernel method weight for each key to get the corresponding multiplier, summing those products, and finally adding the result of a call to the kernel method for the bias.
+- **Description**:
+  - This component models a single artificial neuron within a neural network. It manages a collection of input weights and a single bias value. The kernel manages the raw data storage, while the secondary interface handles the mathematical activation logic.
+- **Kernel Methods**:
+  - void setWeight(String inputId, double weight): assigns a weight value to a specific input connection
+  - void setBias(double b): sets the bias value for this node
+  - double weight(String inputId): reports the weight associated with a specified input
+- **Secondary Methods**:
+  - double calculateActivation(Map<String, Double> inputs): computes the weighted sum of inputs plus bias
+  - void clearWeights(): resets all weights to zero without clearing the bias
+- **Additional Considerations** (*note*: "I don't know" is an acceptable
+   answer for each of the following questions):
+  - Would this component be mutable? Answer and explain:
+    - Yes. Settings weights and biases directly mutates the state of the node.
+  - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+     Answer and explain:
+    - No. The component uses basic types and existing OSU Map functionality for its representation.
+  - Would this component need any enums or constants (e.g.,
+     `Program.Instruction`)? Answer and explain:
+    - No.
+  - Can you implement your secondary methods using your kernel methods?
+     Answer, explain, and give at least one example:
+    - Yes. For example, calculateActivation can be implemented by iterating through the keys of the inputs map, calling the kernel method weight for each key to get the corresponding multiplier, summing those products, and finally adding the result of a call to the kernel method for the bias.
 
 - Component Design #3: PatientVitalMonitor
-  - **Description**:
-    - This component models a patient's health state by tracking various physiological metrics. It uses a map-like structure to associate vital sign names with their current numerical readings, providing a way to monitor stability over time.
-  - **Kernel Methods**:
-    - void addVital(String name, double value): adds a new vital sign tracking entry or updates an existing one.
-    - double removeVital(String name): stops tracking a specific vital sign and returns its last recorded value.
-    - double value(String name): reports the current value of the specified vital sign.
-  - **Secondary Methods**:
-    - int vitalCount(): reports how many different vitals are currently being monitored.
-    - boolean isStable(String name, double min, double max): reports if a specific vital is within a safe provided range.
-  - **Additional Considerations** (*note*: "I don't know" is an acceptable
-    answer for each of the following questions):
-    - Would this component be mutable? Answer and explain:
-      - Yes. As an OSU component, it must support transferFrom and clear, which change the state of the vitals map.
-    - Would this component rely on any internal classes (e.g., `Map.Pair`)?
-      Answer and explain:
-      - No. It interacts directly with String names and double values.
-    - Would this component need any enums or constants (e.g.,
-      `Program.Instruction`)? Answer and explain:
-      - No.
-    - Can you implement your secondary methods using your kernel methods?
-      Answer, explain, and give at least one example:
-      - Yyes. For example, isStable can be implemented by using the kernel method value to retrieve the current reading and then comparing it against the min and max parameters using standard relational operators.
+- **Description**:
+  - This component models a patient's health state by tracking various physiological metrics. It uses a map-like structure to associate vital sign names with their current numerical readings, providing a way to monitor stability over time.
+- **Kernel Methods**:
+  - void addVital(String name, double value): adds a new vital sign tracking entry or updates an existing one.
+  - double removeVital(String name): stops tracking a specific vital sign and returns its last recorded value.
+  - double value(String name): reports the current value of the specified vital sign.
+- **Secondary Methods**:
+  - int vitalCount(): reports how many different vitals are currently being monitored.
+  - boolean isStable(String name, double min, double max): reports if a specific vital is within a safe provided range.
+- **Additional Considerations** (*note*: "I don't know" is an acceptable
+   answer for each of the following questions):
+  - Would this component be mutable? Answer and explain:
+    - Yes. As an OSU component, it must support transferFrom and clear, which change the state of the vitals map.
+  - Would this component rely on any internal classes (e.g., `Map.Pair`)?
+     Answer and explain:
+    - No. It interacts directly with String names and double values.
+  - Would this component need any enums or constants (e.g.,
+     `Program.Instruction`)? Answer and explain:
+    - No.
+  - Can you implement your secondary methods using your kernel methods?
+     Answer, explain, and give at least one example:
+    - Yyes. For example, isStable can be implemented by using the kernel method value to retrieve the current reading and then comparing it against the min and max parameters using standard relational operators.
 
 ## Post-Assignment
 
@@ -347,8 +347,6 @@ PDF to read this rubric as a table).
 If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
-
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [example-components]: https://therenegadecoder.com/code/the-never-ending-list-of-small-programming-project-ideas/
 [markdown-to-pdf-guide]: https://therenegadecoder.com/blog/how-to-convert-markdown-to-a-pdf-3-quick-solutions/
