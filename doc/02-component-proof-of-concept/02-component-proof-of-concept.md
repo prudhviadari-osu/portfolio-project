@@ -2,7 +2,6 @@
 
 - **Name**: Prudhvi Adari
 - **Dot Number**: adari.6
-- **Due Date**: 2/25/26 @ 12:40 PM
 
 ## Assignment Overview
 
