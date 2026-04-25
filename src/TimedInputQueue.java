@@ -34,6 +34,16 @@ public interface TimedInputQueue extends TimedInputQueueKernel {
     boolean isEmpty();
 
     /**
+     * Removes all events from {@code this} that have a timestamp strictly less
+     * than the given threshold. * @param threshold the timestamp cut-off point
+     *
+     * @updates this
+     * @ensures this = [elements of #this whose timestamps are >= threshold,
+     *          remaining in their original relative order]
+     */
+    void removeOlderThan(double threshold);
+
+    /**
      * Counts how many times a specific event appears in {@code this}.
      *
      * @param label
