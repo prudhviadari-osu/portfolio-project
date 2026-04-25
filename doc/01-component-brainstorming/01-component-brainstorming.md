@@ -2,7 +2,7 @@
 
 - **Name**: Prudhvi Adari
 - **Dot Number**: adari.6
-- **Due Date**: 2/6/2026 @ 12:40 PM
+- **Due Date**: 4/25/2026 @ 11:59 PM
 
 ## Assignment Overview
 
@@ -193,91 +193,81 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: Patient
+- Component Design #1: TimedInputQueue
   - **Description**:
-    - This component is supposed to model a patient and their unique medical data in one structured area for organization and easy access. The kernel should allow the client to access and, if needed, modify patient attributes while the secondary interface supports high-level health updates.
-  - * *Kernel Methods**:
-    - void setAttribute(Attribute a, String value)
-    - String getAttribute(Attribute a)
-    - boolean hasAttribute(Attribute a)
-    - void removeAttribute(Attribute a)
+    - The purpose of this component is to model a chronological sequenece of timestamped events. It allows for the storage of labels (actions) alongside the exact time they occurred. The kernel focuses on basic FIFO (First-In-First-Out) operations, while the secondary interface provides temporal analysis.
+  - - *Kernel Methods**:
+    - void enqueue(Map.Pair<String, Double> p): adds a new event-timestamp pair to the end of the queue
+    - Map.Pair<Stirng, Double> dequeue(): removes and returns the event-timestamp pair at the front of the queue
+    - int length(): reports the current number of events in the queue
   - **Secondary Methods**:
-    - int age()
-    - Set allergies()
-    - void updateVitals(Vitals v)
-    - double height()
-    - double bmi()
+    - Map.Pair<String, Double> front(): reports the pair at the front of the queue without removing it
+    - double duration(): returns the time elapsed between the first and last events in the queue
+    - boolean isEmpty(): reports whether the queue contains any events
+    - double averageInterval(): Calculates the average time between events. (Useful for detecting lag or user speed).
+    - void removeOlderThan(double threshold): Clears out any events that happened before a certain timestamp. (Great for memory management).
+    - int frequency(String label): Counts how many times a specific event (like "CLICK") appears in the queue.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - Yes, patient data can change and update over time.
+      - Yes, Inheriting from Standard allows the internal state of the queue to be modified via clear and transferFrom.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - Yes, Map.Pair seems especially useful for this kind of area where attributes need pairing with values as per what the patient exhibits over time. Otherwise, a Set could be used to list patient attributes without repeats. I could also make attribute and vitals classes.
+      - Yes. It relies on Map.Pair to bundle the String label and Double timestamp into a single entry without creating a custom object.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - I don't know.
+      - No. While specific event strings may be used by the user, the component itself treats the labels as generic strings.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - Most of the secondary methods I made like age, height, and bmi are implementable via hasAttribute and getAttribute.
+      - Yes. For example, front can be implemented by calling dequeue to get the first element, saving it, and then using a combination of enqueue and dequeue to rotate the queue back to its original state.
 
 - Component Design #2: NeuralNode
   - **Description**:
-    - This component should be designed to represent a single node in a simple feed-forward neural network. The kernel is designed to store and manipulate weights and biases, while the secondary interface should allow for more interactions with the weights and biases as well as training method help.
+    - This component models a single artificial neuron within a neural network. It manages a collection of input weights and a single bias value. The kernel manages the raw data storage, while the secondary interface handles the mathematical activation logic.
   - **Kernel Methods**:
-    - setWeights(Sequence<Double> w)
-    - setBias(double B)
-    - Sequence<Double> weights()
-    - double bias()
-    - double evaluate(Sequence<Double> inputs)
+    - void setWeight(String inputId, double weight): assigns a weight value to a specific input connection
+    - void setBias(double b): sets the bias value for this node
+    - double weight(String inputId): reports the weight associated with a specified input
   - **Secondary Methods**:
-    - weightedSum(Sequence<Double> inputs)
-    - relu(Sequence<Double> inputs)
-    - sigmoid(Sequence<Double> inputs)
-    - randomizeWeights(Sequence<Double> inputs)
+    - double calculateActivation(Map<String, Double> inputs): computes the weighted sum of inputs plus bias
+    - void clearWeights(): resets all weights to zero without clearing the bias
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - Yes, aside from OSU convention, as nodes tend to modified often during learning cycles for a model, making them immutable would only make the node more of a pain to use than less.
+      - Yes. Settings weights and biases directly mutates the state of the node.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - I don't know but it probably could use Sequence to store all the weights in one data structor or Map.Pair if weights need special pairings per dimension.
+      - No. The component uses basic types and existing OSU Map functionality for its representation.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - I don't know.
+      - No.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - Yes, weights() and bias() can be used to implement weightedSum, as a general weighted sum in a neural network is just the cross product of the weights and bias.
+      - Yes. For example, calculateActivation can be implemented by iterating through the keys of the inputs map, calling the kernel method weight for each key to get the corresponding multiplier, summing those products, and finally adding the result of a call to the kernel method for the bias.
 
-- Component Design #3: TimedInputQueue
+- Component Design #3: PatientVitalMonitor
   - **Description**:
-    - Models a sequence of input events, each associated with a timestamp and input type. The kernel supports insertion and removal of events, while secondary methods provide filtering and basic temporal analysis. I just thought it'd be cool to build game bots that play like people in video games.
+    - This component models a patient's health state by tracking various physiological metrics. It uses a map-like structure to associate vital sign names with their current numerical readings, providing a way to monitor stability over time.
   - **Kernel Methods**:
-    - void enqueue(InputType t, double time)
-    - InputType dequeue()
-    - boolean isEmpty()
-    - int size()
-    - Map.Pair<Double, InputType> front()
+    - void addVital(String name, double value): adds a new vital sign tracking entry or updates an existing one.
+    - double removeVital(String name): stops tracking a specific vital sign and returns its last recorded value.
+    - double value(String name): reports the current value of the specified vital sign.
   - **Secondary Methods**:
-    - double duration()
-    - InputType mostFrequent()
-    - boolean moreUsed(InputType a, InputType b)
-    - TimedInputQueue filter(InputType t)
-    - TimedInputQueue filterbyTime(double startTime, double endTime) with default argument values of start of queue and end of queue timings if needed for single argument calls.
-    - void clearOld(double cutoffTime)
+    - int vitalCount(): reports how many different vitals are currently being monitored.
+    - boolean isStable(String name, double min, double max): reports if a specific vital is within a safe provided range.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - Yes, input can come in at any time and become irrelevant after some time as well.
+      - Yes. As an OSU component, it must support transferFrom and clear, which change the state of the vitals map.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - Maybe Queue and Map.Pair
+      - No. It interacts directly with String names and double values.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - Unsure, but I might have to define common InputTypes beforehand.
+      - No.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - Yes, the secondary methods here have the most amount of complexity among the three. However, using enqueue
+      - Yyes. For example, isStable can be implemented by using the kernel method value to retrieve the current reading and then comparing it against the min and max parameters using standard relational operators.
 
 ## Post-Assignment
 
