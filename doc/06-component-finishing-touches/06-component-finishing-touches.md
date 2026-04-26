@@ -306,18 +306,18 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+This project significantly deepened my understanding of the development lifecycle. I had never built an interface from scratch before, and I didn't realize how many layers of planning and "pre-work" are required before writing the first line of logic. Seeing the project move from an abstract interface to a concrete, tested implementation showed me that development is more about system design than just writing code.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+The project highlighted gaps in my knowledge regarding package management and the internal mechanics of Java refactoring. The most frustrating part was keeping track of the project structure across different branches. I addressed this by utilizing VS Code’s automated refactoring tools—which I honestly didn't expect to work so effectively in the final stage—and by manually auditing my package declarations to ensure consistency across the component.
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+My perspective has changed from seeing code as a simple list of tasks to seeing it as a structured architecture. While the formal mathematical models and contracts felt like a chore at times—especially since the implementation logic was straightforward while the overhead was complex—I still enjoy the process. It’s satisfying to see a complex system finally "click" together after the organization is sorted out.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -325,25 +325,31 @@ Take some time to fill them out honestly.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+I learned how to design a component using the Kernel/Secondary split, how to manage Java packages in a professional directory structure, and how to use automated refactoring tools. I also gained experience in writing JUnit 4 test suites and maintaining a formal changelog across multiple development phases.
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+- Architected and implemented a custom Java component (TimedInputQueue) using an interface-driven design pattern.
+
+- Utilized Design-by-Contract to establish formal mathematical models and representation invariants for software collections.
+
+- Engineered a comprehensive unit testing suite in JUnit 4 to ensure component reliability and edge-case coverage.
+
+- Managed complex project refactoring and package organization within the Java ecosystem to maintain modularity.
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+The project pointed me toward the world of Video Game Development. Since my component was designed to track timed computer actions, I can see how this type of data structure is vital for processing inputs and events in a gaming context. It has made me more interested in how backend structures support real-time user experiences.
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+I plan to continue building small, specialized components that could be used in game engines or input-handling systems. I also intend to reach out to Professor Grifski, who has been a great resource, to get more insight into software engineering best practices and how to move toward a career in technical development.
 
 ### Changelog
 
