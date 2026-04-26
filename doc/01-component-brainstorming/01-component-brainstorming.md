@@ -197,8 +197,8 @@ will likely refine your design to make your implementation easier to use.
   - **Description**:
     - The purpose of this component is to model a chronological sequenece of timestamped events. It allows for the storage of labels (actions) alongside the exact time they occurred. The kernel focuses on basic FIFO (First-In-First-Out) operations, while the secondary interface provides temporal analysis.
   - - *Kernel Methods**:
-    - void enqueue(Map.Pair<String, Double> p): adds a new event-timestamp pair to the end of the queue
-    - Map.Pair<Stirng, Double> dequeue(): removes and returns the event-timestamp pair at the front of the queue
+    - void enqueue(String label, double time): adds a new event-timestamp pair to the end of the queue
+    - Map.Pair<String, Double> dequeue(): removes and returns the event-timestamp pair at the front of the queue
     - int length(): reports the current number of events in the queue
   - **Secondary Methods**:
     - Map.Pair<String, Double> front(): reports the pair at the front of the queue without removing it

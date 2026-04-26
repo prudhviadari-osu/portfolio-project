@@ -1,3 +1,5 @@
+package timedInputQueue;
+
 import components.map.Map;
 import components.standard.Standard;
 
