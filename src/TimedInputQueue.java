@@ -2,11 +2,22 @@ import components.map.Map;
 
 /**
  * Enhanced interface for TimedInputQueue.
+ *
+ * @mathmodel type TimedInputQueue is modeled by string of (label: string, time:
+ *            real)
  */
 public interface TimedInputQueue extends TimedInputQueueKernel {
 
     /**
-     * Reports the pair at the front of {@code this} without removing it.
+     * Reports whether {@code this} is empty.
+     *
+     * @return true iff {@code this} is empty
+     * @ensures isEmpty = (|this| = 0)
+     */
+    boolean isEmpty();
+
+    /**
+     * Reports the front of {@code this} without removing it.
      *
      * @return the event-timestamp pair at the front
      * @requires this /= <>
@@ -15,52 +26,42 @@ public interface TimedInputQueue extends TimedInputQueueKernel {
     Map.Pair<String, Double> front();
 
     /**
-     * Returns the time elapsed between the first and last events in
+     * Reports the time elapsed between the first and last events in
      * {@code this}.
      *
-     * @return the total time duration
-     * @requires |this| > 0
-     * @ensures duration = [timestamp of last element] - [timestamp of first
-     *          element]
+     * @return the duration between the first and last events
+     * @ensures if |this| < 2 then duration = 0.0 else duration = [time of last
+     *          event] - [time of first event]
      */
     double duration();
 
     /**
-     * Reports whether {@code this} contains any events.
+     * Calculates the average time between events in {@code this}.
      *
-     * @return true if empty, false otherwise
-     * @ensures isEmpty = (|this| = 0)
+     * @return the average time between events
+     * @ensures if |this| < 2 then averageInterval = 0.0 else averageInterval =
+     *          duration() / (|this| - 1)
      */
-    boolean isEmpty();
+    double averageInterval();
 
     /**
-     * Removes all events from {@code this} that have a timestamp strictly less
-     * than the given threshold.
-     *
-     * @param threshold
-     *            the timestamp cut-off point
-     * @updates this
-     * @ensures this = [elements of #this whose timestamps are >= threshold,
-     *          remaining in their original relative order]
-     */
-    void removeOlderThan(double threshold);
-
-    /**
-     * Counts how many times a specific event appears in {@code this}.
+     * Counts how many times a specific event label appears in {@code this}.
      *
      * @param label
-     *            the event label to count
-     * @return the number of occurrences of the label
-     * @ensures frequency = [number of times label appears in this]
+     *            the specific event label to count
+     * @return the number of occurrences of {@code label}
+     * @ensures frequency = [count of elements in this where key == label]
      */
     int frequency(String label);
 
     /**
-     * Calculates the average time between events.
+     * Clears out any events that happened before a certain timestamp.
      *
-     * @return the average interval between events
-     * @requires |this| > 1
-     * @ensures averageInterval = duration / (|this| - 1)
+     * @param threshold
+     *            the minimum timestamp to keep
+     * @updates this
+     * @ensures this = [#this with all elements where time < threshold removed,
+     *          and relative order of remaining elements preserved]
      */
-    double averageInterval();
+    void removeOlderThan(double threshold);
 }
